@@ -80,6 +80,14 @@ class LinkedList:
     def getHead(self):
         return self.head
 
+    def return_list(self):
+        current = self.head
+        list = []
+        while (current is not None):
+            list.append(current.item)
+            current = current.next
+        return list
+
     
 
     

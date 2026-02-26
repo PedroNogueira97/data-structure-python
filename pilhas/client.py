@@ -1,7 +1,13 @@
+import sys
+import os
+# Ensure the current directory and parent directory are in the path
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from stack import Stack
 
 def menu():
-    print("1. Push")
+    print("\n1. Push")
     print("2. Pop")
     print("3. Peek")
     print("4. Size")
@@ -14,28 +20,35 @@ def menu():
 stack = Stack()
 
 while True:
-    choice = menu()
-    if choice == 1:
-        item = int(input("Enter the item to push: "))
-        stack.push(item)
-    elif choice == 2:
-        item = stack.pop()
-        if item is not None:
-            print("Popped item:", item)
-    elif choice == 3:
-        item = stack.peek()
-        if item is not None:
-            print("Peeked item:", item)
-    elif choice == 4:
-        print("Size of stack:", stack.size())
-    elif choice == 5:
-        print("Is stack empty?", stack.is_empty())
-    elif choice == 6:
-        stack.clear()
-        print("Stack cleared")
-    elif choice == 7:
-        print("Stack:", stack.return_stack())
-    elif choice == 8:
-        break
-    else:
-        print("Invalid choice")
+    try:
+        choice = menu()
+        if choice == 1:
+            item = input("Enter the item to push: ")
+            stack.push(item)
+        elif choice == 2:
+            item = stack.pop()
+            if item is not None:
+                print("Popped item:", item)
+            else:
+                print("Stack is empty")
+        elif choice == 3:
+            item = stack.peek()
+            if item is not None:
+                print("Peeked item:", item)
+            else:
+                print("Stack is empty")
+        elif choice == 4:
+            print("Size of stack:", stack.size())
+        elif choice == 5:
+            print("Is stack empty?", stack.is_empty())
+        elif choice == 6:
+            stack.clear()
+            print("Stack cleared")
+        elif choice == 7:
+            print("Stack:", stack.return_stack())
+        elif choice == 8:
+            break
+        else:
+            print("Invalid choice")
+    except Exception as e:
+        print(f"An error occurred: {e}")

@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from filas import Queue
 
 class Deque(Queue):
@@ -17,15 +21,27 @@ class Deque(Queue):
             self.lowestcount = 0
             self.items[0] = item
 
+    def add_back(self, item):
+        self.enqueue(item)
+
+    def remove_front(self):
+        return self.dequeue()
+
     def remove_back(self):
         if self.is_empty():
             return None
-        self.count-=1
+        self.count -= 1
         result = self.items[self.count]
         del self.items[self.count]
         return result
 
+    def peek_front(self):
+        return self.peek()
+
     def peek_back(self):
         if self.is_empty():
             return None
-        return self.items[self.count - 1]  
+        return self.items[self.count - 1]
+
+    def return_deque(self):
+        return self.return_queue()

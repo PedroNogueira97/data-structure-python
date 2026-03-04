@@ -31,6 +31,26 @@ class CircularLinkedList(LinkedList):
             return True
         return False
 
+    def remove_at(self, index):
+        if 0 <= index <= self.count:
+            current = self.head
+            if index == 0:
+                if self.size() == 1:
+                    self.head = None
+                else:
+                    removed = self.head
+                    current = self.get_element_at(self.size() - 1)
+                    self.head = self.head.next
+                    current.next = self.head
+                    current = removed
+            else:
+                previous = self.get_element_at(index - 1)
+                current = previous.next
+                previous.next = current.next
+            self.count -= 1
+            return current.item
+        return None
+
     def push(self, item):
         self.insert_at(self.size(), item)
 

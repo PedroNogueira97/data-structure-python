@@ -8,7 +8,7 @@ class LinkedList:
         self.equals = equals
 
     def get_element_at(self, index):
-        if (index >= 0 and index < self.count):
+        if (index >= 0 and index <= self.count):
             current = self.head
             i = 0
             while (i < index and current is not None):

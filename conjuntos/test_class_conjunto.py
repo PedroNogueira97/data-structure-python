@@ -1,0 +1,17 @@
+from classSet import Set
+
+set = Set()
+set.add(1)
+set.add(2)
+set.add(3)
+print(set.has(1))
+print(set.has(2))
+print(set.has(3))
+print(set.has(4))
+print(set.size())
+print(set.values())
+#set.delete(1)
+#print(set.has(1))
+#print(set.has(2))
+#print(set.has(3))
+#print(set.has(4))

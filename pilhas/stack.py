@@ -20,7 +20,7 @@ class Stack:
     def pop(self):
         if self.is_empty():
             return None
-        self.count-=1
+        self.count -= 1
         result = self.items[self.count]
         del self.items[self.count]
         return result
@@ -35,7 +35,8 @@ class Stack:
         self.count = 0
     
     def return_stack(self):
-        return list(self.items.values())
+        stack = [x for x in self.items.values()]
+        return stack
 
     
         

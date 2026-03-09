@@ -33,7 +33,8 @@ class Queue:
         return self.size() == 0
 
     def return_queue(self):
-        return list(self.items.values())
+        queue = [x for x in self.items.values()]
+        return queue
 
     def clear(self):
         self.items = {}

@@ -1,5 +1,5 @@
+memo = {}
 def fibonacci(n):
-    memo = {}
     if n in memo: return memo[n]
 
     if n < 1: return 0
@@ -9,3 +9,4 @@ def fibonacci(n):
     return memo[n]
 
 print(fibonacci(5))
+

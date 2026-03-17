@@ -30,12 +30,17 @@ class BinarySearchTree:
             return []
         return self._inorder(node.left) + [node.key] + self._inorder(node.right)
 
-    #Abaixo metodos a serem implementados
     def search(self, key):
-        ...
+        return self._search(self.root, key)
 
     def _search(self, node, key):
-        ...
+        if node is None:
+            return False
+        if node.key == key:
+            return True
+        if key < node.key:
+            return self._search(node.left, key)
+        return self._search(node.right, key)
 
     def preorder(self):
         return self._preorder(self.root)
@@ -53,12 +58,25 @@ class BinarySearchTree:
             return []
         return self._postorder(node.left) + self._postorder(node.right) + [node.key]
 
-    def height(self):
-        ...
+    def min(self):
+        return self._min(self.root)
 
-    def _height(self, node):
-        ...
+    def _min(self, node):
+        current = node
+        while current and current.left is not None:
+            current = current.left
+        return current.key
 
+    def max(self):
+        return self._max(self.root)
+
+    def _max(self, node):
+        current = node
+        while current and current.right is not None:
+            current = current.right
+        return current.key
+
+    #Abaixo metodos a serem implementados
     def remove(self, key):
         ...
 
@@ -76,5 +94,9 @@ if __name__ == "__main__":
     print('Preorder: ' + str(bst.preorder()))
     print('Postorder: ' + str(bst.postorder()))
 
+    print('Min: ' + str(bst.min()))
+    print('Max: ' + str(bst.max()))
+    print('Search 12: ' + str(bst.search(12)))
+    
 
     

@@ -38,16 +38,20 @@ class BinarySearchTree:
         ...
 
     def preorder(self):
-        ...
+        return self._preorder(self.root)
 
     def _preorder(self, node):
-        ...
+        if node is None:
+            return []
+        return [node.key] + self._preorder(node.left) + self._preorder(node.right)
 
     def postorder(self):
-        ...
+        return self._postorder(self.root)
 
     def _postorder(self, node):
-        ...
+        if node is None:
+            return []
+        return self._postorder(node.left) + self._postorder(node.right) + [node.key]
 
     def height(self):
         ...
@@ -64,11 +68,13 @@ class BinarySearchTree:
 
 if __name__ == "__main__":
     bst = BinarySearchTree()
-    values = [69, 48, 42, 6, 1, 100, 72]
+    values = [25, 50, 10, 35, 12, 55]
     for value in values:
         bst.insert(value)
     
-    print(bst.inorder())
+    print('Inorder: ' + str(bst.inorder()))
+    print('Preorder: ' + str(bst.preorder()))
+    print('Postorder: ' + str(bst.postorder()))
 
 
     

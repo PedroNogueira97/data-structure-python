@@ -12,5 +12,5 @@ def check_palindrome(word):
     palindrome = word.lower() == reversed_word
     return f"The word {word} is {'a' if palindrome else 'not a'} palindrome"
 
-print(check_palindrome("Madam"))
+print(check_palindrome("Ana"))
 print(check_palindrome("hello"))

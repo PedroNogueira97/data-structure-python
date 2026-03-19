@@ -78,11 +78,23 @@ class BinarySearchTree:
 
     #Abaixo metodos a serem implementados
     def remove(self, key):
-        ...
+        return self._remove(self.root, key)
 
     def _remove(self, node, key):
-        ...
-
+        if node is None:
+            return None
+        if key < node.key:
+            node.left = self._remove(node.left, key)
+        elif key > node.key:
+            node.right = self._remove(node.right, key)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            node.key = self._min(node.right)
+            node.righ = self._remove(node.right, node.key)
+        return node
 
 if __name__ == "__main__":
     bst = BinarySearchTree()
@@ -97,6 +109,8 @@ if __name__ == "__main__":
     print('Min: ' + str(bst.min()))
     print('Max: ' + str(bst.max()))
     print('Search 12: ' + str(bst.search(12)))
+    print('Remove 12: ' + str(bst.remove(12)))
+    print('Inorder: ' + str(bst.inorder()))
     
 
     
